@@ -6,6 +6,8 @@ Container size: 925MB, it is quite large because the signing app is a graphical 
 
 *This project is not affiliated with or endorsed by Certum*
 
+**There are no pre-built images on any registry for this project. Due to the security sensitive nature of this tool, please built it locally for your own use.**
+
 ## How it works
 
 We start the [Certum Simply Sign Desktop](https://support.certum.eu/en/software/procertum-smartsign/) application in an Xvnc session to log in to the signature service. We expose a p11-kit socket outside of the container to then use the cloud session to do automatic signatures.
