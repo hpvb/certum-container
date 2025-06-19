@@ -6,7 +6,15 @@ Container size: 782MB, it is quite large because the signing app is a graphical 
 
 *This project is not affiliated with or endorsed by Certum*
 
-**There are no pre-built images on any registry for this project. Due to the security sensitive nature of this tool, please built it locally for your own use.**
+## Security Notice
+
+**DO NOT use pre-built container images for this project from any registry (Docker Hub, GHCR, etc.).**
+
+This container handles sensitive code signing operations. For security reasons:
+
+ - Always build the image yourself from source
+ - Inspect the Dockerfile and source code before building
+ - Never trust pre-built images for security-sensitive applications
 
 ## How it works
 
