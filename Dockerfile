@@ -18,7 +18,7 @@ ENV	USER=root
 ENV	DISPLAY=:99
 
 # Install required packages for VNC, X11, and p11-kit
-RUN 	dnf -y install --setopt=install_weak_deps=False pcsc-lite-libs libglvnd-glx tigervnc-server-minimal stalonetray blackbox libXcomposite libXi libICE libSM pulseaudio-libs-glib2 supervisor p11-kit-server libxslt && \
+RUN 	dnf -y install --setopt=install_weak_deps=False pcsc-lite-libs libglvnd-glx tigervnc-server-minimal stalonetray blackbox libXcomposite libXi libICE libSM pulseaudio-libs-glib2 p11-kit-server libxslt procps-ng monit && \
 	dnf clean all && \
 	rm -rf /usr/lib64/dri/* && \
 	rm -rf /usr/lib64/libgallium-25.0.7.so && \
@@ -32,13 +32,13 @@ RUN	curl -O https://files.certum.eu/software/SimplySignDesktop/Linux-RedHat/2.9.
 	rm -f SimplySignDesktop-2.9.10-9.2.14.0-x86_64-prod-centos.bin && \
 	mv /root/certum/SSD-2.9.10-dist /opt/SimplySignDesktop/ && \
 	rm -rf certum && \
-	cp /opt/SimplySignDesktop/SimplySignDesktop.xml /root && \
-	sed -i '2i sleep 2 # Give stalonetray some time to start.' /opt/SimplySignDesktop/SimplySignDesktop_start
+	cp /opt/SimplySignDesktop/SimplySignDesktop.xml /root 
 
 COPY	files /
-RUN	chmod +x /root/entrypoint.sh
+RUN	chmod +x /usr/local/bin/* && \
+	chmod 0600 /etc/monitrc
 
 VOLUME  /run/p11-kit
 EXPOSE  5900
 
-ENTRYPOINT /root/entrypoint.sh
+ENTRYPOINT /usr/local/bin/entrypoint.sh

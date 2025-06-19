@@ -6,4 +6,4 @@ if [ -z "${VNCPASSWORD}" ]; then
 fi
 
 echo -e "${VNCPASSWORD}\n${VNCPASSWORD}\nn\n" | vncpasswd /root/.vnc/passwd
-exec /usr/bin/supervisord -n
+exec /usr/bin/monit -I 
