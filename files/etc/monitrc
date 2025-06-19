@@ -10,14 +10,9 @@ check process xvnc matching /usr/bin/Xvnc
     start program = "/usr/local/bin/run_bg.sh /usr/bin/Xvnc :99 -geometry 1024x768 -depth 24 -rfbport 5900 -rfbauth /root/.vnc/passwd -SecurityTypes VncAuth"
     stop program = "/usr/bin/pkill Xvnc"
 
-check process blackbox matching /usr/bin/blackbox
-    start program = "/usr/local/bin/run_bg.sh /usr/bin/blackbox"  
-    stop program = "/usr/bin/pkill blackbox"
-    depends on xvnc
-
 check process stalonetray matching /usr/bin/stalonetray
     start program = "/usr/local/bin/run_bg.sh /usr/bin/stalonetray"
-    stop program = "/usr/bin/pkill stalonetray" 
+    stop program = "/usr/bin/pkill stalonetray"
     depends on xvnc
 
 check process ssd matching /opt/SimplySignDesktop/SimplySignDesktop
@@ -27,5 +22,5 @@ check process ssd matching /opt/SimplySignDesktop/SimplySignDesktop
 
 check process p11kit matching server
     start program = "/usr/local/bin/run_bg.sh /usr/bin/p11-kit server -v -f -n /run/p11-kit/p11kit.sock pkcs11:token=Code%20Signing"
-    stop program = "/usr/bin/pkill p11-kit-server" 
+    stop program = "/usr/bin/pkill p11-kit-server"
     depends on ssd

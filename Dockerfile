@@ -18,7 +18,10 @@ ENV	USER=root
 ENV	DISPLAY=:99
 
 # Install required packages for VNC, X11, and p11-kit
-RUN 	dnf -y install --setopt=install_weak_deps=False pcsc-lite-libs libglvnd-glx tigervnc-server-minimal stalonetray blackbox libXcomposite libXi libICE libSM pulseaudio-libs-glib2 p11-kit-server libxslt procps-ng monit && \
+RUN 	dnf -y install --setopt=install_weak_deps=False \
+		libX11 libXext libXcomposite libXi libICE libSM libXrender libxcb libXau\
+		pcsc-lite-libs libglvnd-glx tigervnc-server-minimal stalonetray fontconfig\
+		pulseaudio-libs-glib2 p11-kit-server libxslt procps-ng monit && \
 	dnf clean all && \
 	rm -rf /usr/lib64/dri/* && \
 	rm -rf /usr/lib64/libgallium-25.0.7.so && \
