@@ -8,19 +8,19 @@ set httpd port 2812 and allow 0.0.0.0/0
 
 check process xvnc matching /usr/bin/Xvnc
     start program = "/usr/local/bin/run_bg.sh /usr/bin/Xvnc :99 -geometry 1024x768 -depth 24 -rfbport 5900 -rfbauth /root/.vnc/passwd -SecurityTypes VncAuth"
-    stop program = "/usr/bin/pkill Xvnc"
+    stop program = "/usr/bin/pkill -f Xvnc"
 
 check process stalonetray matching /usr/bin/stalonetray
     start program = "/usr/local/bin/run_bg.sh /usr/bin/stalonetray"
-    stop program = "/usr/bin/pkill stalonetray"
+    stop program = "/usr/bin/pkill -f stalonetray"
     depends on xvnc
 
 check process ssd matching /opt/SimplySignDesktop/SimplySignDesktop
     start program = "/usr/local/bin/run_bg.sh /opt/SimplySignDesktop/SimplySignDesktop_start"
-    stop program = "/usr/bin/pkill SimplySignDesktop"
+    stop program = "/usr/bin/pkill -f SimplySignDesktop"
     depends on stalonetray
 
 check process p11kit matching server
     start program = "/usr/local/bin/run_bg.sh /usr/bin/p11-kit server -v -f -n /run/p11-kit/p11kit.sock pkcs11:token=Code%20Signing"
-    stop program = "/usr/bin/pkill p11-kit-server"
+    stop program = "/usr/bin/pkill -f server"
     depends on ssd
