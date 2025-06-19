@@ -1,0 +1,10 @@
+.git
+.gitignore
+README.md
+LICENSE
+.github/
+.vscode/
+.idea/
+*.md
+.DS_Store
+Thumbs.db
