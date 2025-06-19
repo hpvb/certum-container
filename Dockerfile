@@ -18,7 +18,7 @@ ENV	USER=root
 ENV	DISPLAY=:99
 
 # Install required packages for VNC, X11, and p11-kit
-RUN 	dnf -y install --setopt=install_weak_deps=False pcsc-lite-libs libglvnd-glx tigervnc-server-minimal stalonetray metacity pulseaudio-libs-glib2 supervisor p11-kit-server libxslt && \
+RUN 	dnf -y install --setopt=install_weak_deps=False pcsc-lite-libs libglvnd-glx tigervnc-server-minimal stalonetray blackbox libXcomposite libXi libICE libSM pulseaudio-libs-glib2 supervisor p11-kit-server libxslt && \
 	dnf clean all
 
 # Install SimplySignDesktop

@@ -2,7 +2,7 @@
 
 This container has everything you need to use [Certum Code Signing in the Cloud](https://shop.certum.eu/code-signing.html) with Linux in a CI/CD system.
 
-Container size: 925MB, it is quite large because the signing app is a graphical application and requires a lot of desktop services to be installed to function.
+Container size: 782MB, it is quite large because the signing app is a graphical application and requires a lot of desktop services to be installed to function.
 
 *This project is not affiliated with or endorsed by Certum*
 
