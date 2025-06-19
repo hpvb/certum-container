@@ -19,7 +19,11 @@ ENV	DISPLAY=:99
 
 # Install required packages for VNC, X11, and p11-kit
 RUN 	dnf -y install --setopt=install_weak_deps=False pcsc-lite-libs libglvnd-glx tigervnc-server-minimal stalonetray blackbox libXcomposite libXi libICE libSM pulseaudio-libs-glib2 supervisor p11-kit-server libxslt && \
-	dnf clean all
+	dnf clean all && \
+	rm -rf /usr/lib64/dri/* && \
+	rm -rf /usr/lib64/libgallium-25.0.7.so && \
+	rm -rf /usr/lib64/gallium-pipe && \
+	rm -rf /usr/lib64/llvm20
 
 # Install SimplySignDesktop
 RUN	curl -O https://files.certum.eu/software/SimplySignDesktop/Linux-RedHat/2.9.10-9.2.14.0/SimplySignDesktop-2.9.10-9.2.14.0-x86_64-prod-centos.bin && \
